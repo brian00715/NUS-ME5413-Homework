@@ -1,0 +1,19 @@
+<launch>
+    <param name="/use_sim_time" value="true" />
+  
+    <node name="cartographer_node" pkg="cartographer_ros"
+        type="cartographer_node" args="
+            -configuration_directory $(find me5413)/config
+            -configuration_basename 5413_Task1.lua"
+        output="screen">
+    </node>
+  
+    <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+        type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+  
+    <node name="rviz" pkg="rviz" type="rviz" required="true"
+        args="-d $(find task1)/config/rviz.rviz" />
+  
+    <node name="playbag" pkg="rosbag" type="play"
+        args="--clock $(arg bag_filename)" />
+  </launch>

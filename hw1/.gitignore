@@ -1,0 +1,13 @@
+**__pycache__**
+.vscode
+.venv
+data
+backup
+**.avi
+**results/improve
+**results/kalman
+**results/nonkalman
+**results/final
+**results/hsv
+*.zip
+**test.py

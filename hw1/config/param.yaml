@@ -1,0 +1,222 @@
+# search_region_delta: the margin of the search region add to the template region
+# kalman:
+#   init: # initilal estimation (Prior estimation)
+
+task1:
+  temp_size_adjust_ratio_limit:
+    max: 1.75
+    min: 0.25
+  temp_adjust_coef:
+    pos: 0.75
+    size: 0.9
+
+  seq_1:
+    enable_kalman: false
+    enable_multi_scale: false
+    enable_hsv_finetune: false
+    temp_delta: # for without kalman
+      dx: 30
+      dh: -60
+      dy: 40
+      dw: -20
+    search_region_delta:
+      dx: -20
+      dh: 80
+      dy: -20
+      dw: 20
+    kalman:
+      temp_delta:
+        dx: 30
+        dh: -60
+        dy: 60
+        dw: -60
+      search_region_delta:
+        dx: -20
+        dh: 60
+        dy: -10
+        dw: 80
+      init:
+        vx: -10
+        vy: 10
+      Q:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 0.01, 0]
+        - [0, 0, 0, 0.01]
+      R:
+        - [0.01, 0]
+        - [0, 0.01]
+    hsv:
+      low: [10, 57, 0]
+      high: [48, 255, 255]
+
+  seq_2:
+    enable_kalman: false
+    enable_multi_scale: false
+    enable_hsv_finetune: false
+    temp_delta:
+      dx: 0
+      dh: 0
+      dy: 0
+      dw: 0
+    search_region_delta:
+      dx: 0
+      dh: 0
+      dy: -80
+      dw: 40
+    kalman:
+      temp_delta:
+        dx: 0
+        dh: 0
+        dy: 0
+        dw: 0
+      search_region_delta:
+        dx: 0
+        dh: 20
+        dy: -60
+        dw: 40
+      init:
+        vx: 0
+        vy: -20
+      Q:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 0.001, 0]
+        - [0, 0, 0, 0.001]
+      R:
+        - [0.1, 0]
+        - [0, 0.1]
+    hsv:
+      low: [107, 11, 18]
+      high: [162, 128, 108]
+
+  seq_3:
+    enable_kalman: false
+    enable_multi_scale: false
+    enable_hsv_finetune: false
+
+    temp_delta:
+      dx: 40
+      dy: 40
+      dh: -60
+      dw: -60
+    search_region_delta:
+      dx: -40
+      dh: 40
+      dy: -50
+      dw: 50
+    kalman:
+      temp_delta:
+        dx: 20
+        dh: -20
+        dy: 10
+        dw: -20
+      search_region_delta:
+        dx: -20
+        dh: 20
+        dy: -30
+        dw: 50
+      init:
+        vx: 0
+        vy: 10
+      Q:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 0.001, 0]
+        - [0, 0, 0, 0.001]
+      R:
+        - [1, 0]
+        - [0, 1]
+    adap_delta:
+      dw: 2
+      dh: 2
+    hsv:
+      low: [24, 0, 0]
+      high: [180, 218, 86]
+
+  seq_4:
+    enable_kalman: false
+    enable_multi_scale: false
+    enable_hsv_finetune: false
+
+    temp_delta:
+      dx: 0
+      dh: -80
+      dy: 20
+      dw: -20
+    search_region_delta:
+      dx: -10
+      dh: 10
+      dy: -10
+      dw: 10
+    kalman:
+      temp_delta:
+        dx: 50
+        dh: -100
+        dy: 50
+        dw: -50
+      search_region_delta:
+        dx: -10
+        dh: 10
+        dy: -10
+        dw: 10
+      init:
+        vx: 0
+        vy: 10
+      Q:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 0.001, 0]
+        - [0, 0, 0, 0.001]
+      R:
+        - [10, 0]
+        - [0, 10]
+    adap_delta:
+      dw: 5
+      dh: 5
+    hsv:
+      low: [83, 0, 0]
+      high: [177, 171, 49]
+
+  seq_5:
+    enable_kalman: false
+    enable_hsv_finetune: false
+    enable_multi_scale: false
+
+    temp_delta:
+      dx: 0
+      dh: 0
+      dy: 0
+      dw: 0
+    search_region_delta:
+      dx: -20
+      dh: 20
+      dy: -20
+      dw: 20
+    kalman:
+      temp_delta:
+        dx: 0
+        dh: -30
+        dy: 20
+        dw: 0
+      search_region_delta:
+        dx: -30
+        dh: 30
+        dy: -20
+        dw: 40
+      init:
+        vx: 0
+        vy: 20
+      Q:
+        - [1, 0, 0, 0]
+        - [0, 1, 0, 0]
+        - [0, 0, 0.01, 0]
+        - [0, 0, 0, 0.01]
+      R:
+        - [1, 0]
+        - [0, 1]
+    hsv:
+      low: [0, 108, 80]
+      high: [34, 255, 156]
+
+task2:
